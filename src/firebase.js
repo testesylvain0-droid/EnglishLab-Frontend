@@ -2,20 +2,32 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import { getAnalytics } from 'firebase/analytics';
 
-// Replace with your Firebase config
+// Firebase configuration with actual credentials
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCYKofSYVVmPLqh2o5_yFy_XQ2ZbBtOO3c",
+  authDomain: "vaovao-c1215.firebaseapp.com",
+  projectId: "vaovao-c1215",
+  storageBucket: "vaovao-c1215.firebasestorage.app",
+  messagingSenderId: "854816769200",
+  appId: "1:854816769200:web:bea2ca6042aaa3d78ae775",
+  measurementId: "G-7BMFBZ2LC4"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase services
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
+// Initialize analytics
+let analytics;
+if (typeof window !== 'undefined') {
+  analytics = getAnalytics(app);
+}
+
+export { analytics };
 export default app;
